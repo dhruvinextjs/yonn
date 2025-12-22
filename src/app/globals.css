@@ -26,3 +26,30 @@ body {
 }
 
 
+.nav-link {
+  position: relative;
+}
+
+/* top-left corner */
+.nav-link.active::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -20px;
+  width: 13px;
+  height: 8px;
+  border-top: 1px solid rgb(102, 0, 102);   
+  border-left: 1px solid rgb(102, 0, 102);
+}
+
+/* bottom-right corner */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: -8px;
+  width: 13px;
+  height: 8px;
+  border-bottom: 1px solid rgb(102, 0, 102);
+  border-right: 1px solid rgb(102, 0, 102);
+}
