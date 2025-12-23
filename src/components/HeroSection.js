@@ -1,96 +1,57 @@
 'use client'
-
+ 
 import Image from 'next/image'
 import { FaApple } from 'react-icons/fa'
 import { IoLogoAndroid } from "react-icons/io"
-
-export default function HeroSection() {
-    return (
-        <section className="relative w-full overflow-hidden bg-black">
-            {/* Background */}
-            <Image
-                src="/images/bg-1.png"
-                alt="Background"
-                fill
-                priority
-                className="object-cover "
-            />
-
-            <div className="relative z-10 mx-auto max-w-7xl px-6 py-24">
-                <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-                    {/* LEFT CONTENT */}
-                    <div className="text-[#FFFFFF]">
-                        <h1 className="text-4xl font-normal leading-tight md:text-3xl">
-                            BETTER DIRECTIONS. EASIER NAVIGATION
-                        </h1>
-
-                        <p className="mt-6 max-w-2xl text-lg text-[#FFFFFF] leading-loose tracking-[1px]">
-                            Are you tired of wasting time explaining your location? Download
-                            Yonn.
-                        </p>
-
-                        <p className="mt-4 max-w-xl text-lg text-[#FFFFFF] leading-relaxed	tracking-[1px]">
-                            Let&apos;s face it – our cities are hard to navigate and not using
-                            street addresses makes it even harder. With Yonn, generate a
-                            location code wherever you are and share it securely. What&apos;s
-                            more? You can add pictures and voice notes to make sure no-one
-                            gets lost… this time!
-                        </p>
-
-                        {/* Buttons */}
-                        <div className="mt-18 flex flex-wrap gap-4">
-                            {/* Apple Store */}
-                            <button className="flex items-center gap-3 rounded-lg bg-white  px-12 py-5 text-base font-semibold text-[#660066] transition hover:scale-105 hover:bg-gray-100">
-                                <FaApple className="text-2xl text-[#660066]" />
-                                Apple Store
-                            </button>
-
-                            {/* Play Store */}
-                            <button className="flex items-center gap-3 rounded-lg bg-white px-12 py-5 text-base font-semibold text-[#660066] transition hover:scale-105 hover:bg-gray-100">
-                                <IoLogoAndroid className="text-2xl text-[#660066]" />
-                                Play Store
-                            </button>
-                        </div>
-
-                    </div>
-
-                    {/* RIGHT PHONES */}
-                    <div className="relative flex justify-center lg:justify-end h-[600px] mt-10">
-                        {/* Purple Phone - Back Left (mobile1) */}
-                        <div className="absolute right-12 top-16 z-20 transform ">
-                            <Image
-                                src="/images/mobile1.png"
-                                alt="Purple App Screen"
-                                width={280}
-                                height={560}
-                                className="drop-shadow-3xl"
-                            />
-                        </div>
-
-                        {/* Map Phone - Front Right (mobile2) */}
-                        <div className="absolute left-12 top-0 z-10 transform  ">
-                            <Image
-                                src="/images/mobile2.png"
-                                alt="Map Screen"
-                                width={280}
-                                height={560}
-                                className="drop-shadow-2xl"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-'use client'
+import { motion } from 'framer-motion'
  
-import Image from 'next/image'
+/* Animation Variants */
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+}
+ 
+const itemUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+}
+ 
+const imageUpFirst = {
+  hidden: { opacity: 0, y: 100 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay: 0.5 },
+  },
+}
+ 
+const imageUpSecond = {
+  hidden: { opacity: 0, y: 100 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay: 0.9 },
+  },
+}
  
 export default function HeroSection() {
   return (
-    <section className="relative w-500 h-[1500px] overflow-hidden bg-black">
+    <section
+      className="
+        relative w-full overflow-hidden bg-black
+        min-h-[85vh] md:min-h-[70vh] lg:min-h-screen
+        flex items-center pt-20 md:pt-16 lg:pt-32
+      "
+    >
       {/* Background */}
       <Image
         src="/images/bg-1.png"
@@ -100,73 +61,96 @@ export default function HeroSection() {
         className="object-cover"
       />
  
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 mx-auto max-w-6xl px-6 py-10 md:py-8 lg:py-4"
+      >
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+ 
           {/* LEFT CONTENT */}
-          <div className="text-white">
-            <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-              BETTER DIRECTIONS. <br /> EASIER NAVIGATION
-            </h1>
+          <motion.div
+            variants={container}
+            className="text-white text-center lg:text-left"
+          >
+            <motion.h1
+              variants={itemUp}
+              className="text-3xl md:text-4xl lg:text-[27px] font-normal leading-tight"
+            >
+              BETTER DIRECTIONS. EASIER NAVIGATION
+            </motion.h1>
  
-            <p className="mt-6 max-w-xl text-base text-gray-200">
-              Are you tired of wasting time explaining your location? Download
-              Yonn.
-            </p>
+            <motion.p
+              variants={itemUp}
+              className="mt-6 max-w-2xl text-base leading-tight tracking-[1px]"
+            >
+              Are you tired of wasting time explaining your location? Download Yonn.
+            </motion.p>
  
-            <p className="mt-4 max-w-xl text-base text-gray-200">
-              Let&apos;s face it – our cities are hard to navigate and not using
-              street addresses makes it even harder. With Yonn, generate a
-              location code wherever you are and share it securely. What&apos;s
-              more? You can add pictures and voice notes to make sure no-one
-              gets lost… this time!
-            </p>
+            <motion.p
+              variants={itemUp}
+              className="mt-4 max-w-xl text-base leading-relaxed tracking-[1px]"
+            >
+               Let&apos;s face it – our cities are hard to navigate and not using
+                             street addresses makes it even harder. With Yonn, generate a
+                            location code wherever you are and share it securely. What&apos;s
+                             more? You can add pictures and voice notes to make sure no-one
+                             gets lost… this time!
+            </motion.p>
  
             {/* Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              <button className="flex items-center gap-3 rounded-lg bg-white px-6 py-3 text-black transition hover:scale-105">
-                <Image
-                  src="/apple.svg"
-                  alt="Apple"
-                  width={22}
-                  height={22}
-                />
-                <span className="font-medium">Apple Store</span>
+            <motion.div
+              variants={itemUp}
+              className="mt-10 flex flex-wrap justify-center lg:justify-start gap-1"
+            >
+              <button className="group flex items-center gap-1 rounded-lg bg-white px-8 py-3 text-base md:text-lg font-medium text-[#660066] border border-white transition-all hover:bg-transparent hover:text-white">
+                <FaApple className="text-2xl group-hover:text-white" />
+                Apple Store
               </button>
  
-              <button className="flex items-center gap-3 rounded-lg bg-white px-6 py-3 text-black transition hover:scale-105">
-                <Image
-                  src="/playstore.svg"
-                  alt="Play Store"
-                  width={22}
-                  height={22}
-                />
-                <span className="font-medium">Play Store</span>
+              <button className="group flex items-center gap-1 rounded-lg bg-white px-8 py-3 text-base md:text-lg font-medium text-[#660066] border border-white transition-all hover:bg-transparent hover:text-white">
+                <IoLogoAndroid className="text-2xl group-hover:text-white" />
+                Play Store
               </button>
-            </div>
+            </motion.div>
+          </motion.div>
+ 
+          {/* RIGHT PHONES — ONLY DESKTOP */}
+          <div className="hidden lg:flex relative justify-end h-[600px] w-[440px] shrink-0">
+            {/* Mobile 2 (Back) - Pehle yeh niche se aayega */}
+            <motion.div
+              variants={imageUpFirst}
+              initial="hidden"
+              animate="show"
+              className="absolute -left-4 top-0 z-10 scale-90"
+            >
+              <Image
+                src="/images/mobile2.png"
+                alt="Mobile 2"
+                width={280}
+                height={560}
+              />
+            </motion.div>
+ 
+            {/* Mobile 1 (Front) - Baad mein yeh niche se aayega */}
+            <motion.div
+              variants={imageUpSecond}
+              initial="hidden"
+              animate="show"
+              className="absolute -right-2 top-6 z-20 scale-80"
+            >
+              <Image
+                src="/images/mobile1.png"
+                alt="Mobile 1"
+                width={280}
+                height={580}
+              />
+            </motion.div>
           </div>
  
-          {/* RIGHT PHONES */}
-          <div className="relative flex justify-center lg:justify-end">
-            {/* Purple Phone */}
-            <Image
-              src="/phone-purple.png"
-              alt="Purple App Screen"
-              width={260}
-              height={520}
-              className="relative z-10"
-            />
- 
-            {/* Map Phone */}
-            <Image
-              src="/phone-map.png"
-              alt="Map Screen"
-              width={260}
-              height={520}
-              className="absolute right-0 top-16 z-20 hidden md:block"
-            />
-          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
