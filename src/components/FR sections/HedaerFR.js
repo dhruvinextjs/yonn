@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const sections = ["home", "features", "screenshot", "contact", "terms" , "privacy" , "FR"];
+const sections = ["home", "features", "screenshot", "contact", "privacy-fr", "terms-fr", "/"];
 
-export default function Header() {
+export default function HeaderFR() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -23,7 +23,7 @@ export default function Header() {
     setScrolled(window.scrollY > 50);
   };
 
-  // ✅ INITIAL CHECK (IMPORTANT)
+  // ✅ INITIAL CHECK — reload par bhi correct state
   onScroll();
 
   window.addEventListener("scroll", onScroll);
@@ -36,9 +36,7 @@ export default function Header() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
       { threshold: 0.6 }
@@ -59,13 +57,13 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md scrolled" : "bg-transparent"
+      className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link href="/">
+        <Link href="/FR">
           <Image
             src={scrolled ? "/images/dark_logo.svg" : "/images/white_logo.svg"}
             alt="Logo"
@@ -74,15 +72,15 @@ export default function Header() {
           />
         </Link>
 
-        {/* ✅ Desktop Nav → ONLY lg and above */}
+        {/* Desktop Navigation → ONLY lg */}
         <nav className="hidden lg:flex items-center space-x-6 uppercase text-[15px] font-light">
-          <Link href="/" className={linkClass("home")}>Home</Link>
-          <Link href="#features" className={linkClass("features")}>Features</Link>
-          <Link href="#screenshot" className={linkClass("screenshot")}>Screenshot</Link>
+          <Link href="/FR" className={linkClass("home")}>Accueil</Link>
+          <Link href="#features" className={linkClass("features")}>Fonctionnalités</Link>
+          <Link href="#screenshot" className={linkClass("screenshot")}>Captures d&apos;écran</Link>
           <Link href="#contact" className={linkClass("contact")}>Contact</Link>
-          <Link href="/privacy" className={linkClass("privacy")}>Policy</Link>
-          <Link href="/terms" className={linkClass("terms")}>Terms</Link>
-          <Link href="/FR" className={linkClass("FR")}>Francais</Link>
+          <Link href="/privacy-fr" className={linkClass("privacy-fr")}>Politique</Link>
+          <Link href="/terms-fr" className={linkClass("terms-fr")}>Mentions légales</Link>
+          <Link href="/" className={linkClass("/")}>English</Link>
         </nav>
 
         {/* Hamburger → md & iPad */}
@@ -99,30 +97,38 @@ export default function Header() {
             viewBox="0 0 24 24"
           >
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
       </div>
 
-      {/* ✅ Mobile / iPad Menu — smooth animation */}
+      {/* Mobile / iPad Menu — smooth animation */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-md
           ${menuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"}
         `}
       >
         <nav className="flex flex-col space-y-4 p-6 uppercase text-gray-700">
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="#features" onClick={() => setMenuOpen(false)}>Features</Link>
-          <Link href="#screenshot" onClick={() => setMenuOpen(false)}>Screenshot</Link>
+          <Link href="#home" onClick={() => setMenuOpen(false)}>Accueil</Link>
+          <Link href="#features" onClick={() => setMenuOpen(false)}>Fonctionnalités</Link>
+          <Link href="#screenshot" onClick={() => setMenuOpen(false)}>Captures d&apos;écran</Link>
           <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-          <Link href="/policy" onClick={() => setMenuOpen(false)}>Policy</Link>
-          <Link href="/terms" onClick={() => setMenuOpen(false)}>Terms</Link>
-          <Link href="/FR" onClick={() => setMenuOpen(false)}>Francais</Link>
+          <Link href="/privacy-fr" onClick={() => setMenuOpen(false)}>Politique</Link>
+          <Link href="/terms-fr" onClick={() => setMenuOpen(false)}>Mentions légales</Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>English</Link>
         </nav>
       </div>
     </header>

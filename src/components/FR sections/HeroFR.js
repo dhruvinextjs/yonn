@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { FaApple } from "react-icons/fa";
-import { IoLogoAndroid } from "react-icons/io";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from 'next/image'
+import { FaApple } from 'react-icons/fa'
+import { IoLogoAndroid } from "react-icons/io"
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 /* Animation Variants */
 const container = {
@@ -15,36 +15,36 @@ const container = {
       staggerChildren: 0.2,
     },
   },
-};
+}
 
 const itemUp = {
   hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
-};
+}
 
 const imageUpFirst = {
   hidden: { opacity: 0, y: 100 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut", delay: 0.5 },
+    transition: { duration: 0.7, ease: 'easeOut', delay: 0.5 },
   },
-};
+}
 
 const imageUpSecond = {
   hidden: { opacity: 0, y: 100 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut", delay: 0.9 },
+    transition: { duration: 0.7, ease: 'easeOut', delay: 0.9 },
   },
-};
+}
 
-export default function HeroSection() {
+export default function HeroFR() {
   return (
     <section
       className="
@@ -69,6 +69,7 @@ export default function HeroSection() {
         className="relative z-10 mx-auto max-w-6xl px-6 py-10 md:py-8 lg:py-4"
       >
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+
           {/* LEFT CONTENT */}
           <motion.div
             variants={container}
@@ -78,26 +79,21 @@ export default function HeroSection() {
               variants={itemUp}
               className="text-3xl md:text-4xl lg:text-[27px] font-normal leading-tight"
             >
-              BETTER DIRECTIONS. EASIER NAVIGATION
+              UNE NAVIGATION PLUS FACILE
             </motion.h1>
 
             <motion.p
               variants={itemUp}
               className="mt-6 max-w-2xl text-base leading-tight tracking-[1px]"
             >
-              Are you tired of wasting time explaining your location? Download
-              Yonn.
+             Fatigués de perdre du temps à expliquer votre localisation? Téléchargez Yonn.
             </motion.p>
 
             <motion.p
               variants={itemUp}
               className="mt-4 max-w-xl text-base leading-relaxed tracking-[1px]"
             >
-              Let&apos;s face it – our cities are hard to navigate and not using
-              street addresses makes it even harder. With Yonn, generate a
-              location code wherever you are and share it securely. What&apos;s
-              more? You can add pictures and voice notes to make sure no-one
-              gets lost… this time!
+              Avouons-le, nos villes sont difficiles à naviguer et le fait de ne pas utiliser d'adresses postales rend la tâche encore plus difficile. Avec Yonn, générez un code de localisation où que vous soyez et partagez-le en toute sécurité. De plus, vous pouvez ajouter des photos et des notes vocales pour vous assurer que personne ne se perde... cette fois-ci!
             </motion.p>
 
             {/* Buttons */}
@@ -105,7 +101,7 @@ export default function HeroSection() {
               variants={itemUp}
               className="mt-10 flex flex-wrap justify-center lg:justify-start gap-1"
             >
-              <Link
+               <Link
                 href={"https://apps.apple.com/us/app/yonn/id6446113149"}
                 target="_blank"
               >
@@ -131,7 +127,7 @@ export default function HeroSection() {
 
           {/* RIGHT PHONES — ONLY DESKTOP */}
           <div className="hidden lg:flex relative justify-end h-[600px] w-[440px] shrink-0">
-            {/* Mobile 2 (Back) - Pehle yeh niche se aayega */}
+            {/* Mobile 2 (Back) */}
             <motion.div
               variants={imageUpFirst}
               initial="hidden"
@@ -146,7 +142,7 @@ export default function HeroSection() {
               />
             </motion.div>
 
-            {/* Mobile 1 (Front) - Baad mein yeh niche se aayega */}
+            {/* Mobile 1 (Front) */}
             <motion.div
               variants={imageUpSecond}
               initial="hidden"
@@ -161,8 +157,9 @@ export default function HeroSection() {
               />
             </motion.div>
           </div>
+
         </div>
       </motion.div>
     </section>
-  );
+  )
 }

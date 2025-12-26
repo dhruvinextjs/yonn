@@ -19,7 +19,7 @@ const bounceDrop = {
   },
 };
 
-export default function DownloadSection() {
+export default function DownloadFR() {
   return (
     <section
       className="relative bg-cover bg-center bg-fixed py-28"
@@ -38,7 +38,7 @@ export default function DownloadSection() {
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          Download App
+          TÉLÉCHARGER L&apos;APPLICATION
           <div className="relative flex flex-col items-center">
             <div className="flex items-center gap-1">
               <span className="w-15 h-[1px] mt-4 bg-gray-300"></span>

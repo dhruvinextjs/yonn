@@ -30,12 +30,17 @@ body {
   position: relative;
 }
 
+/* purple ONLY after scroll */
+.scrolled .nav-link.active {
+  color: #660066;
+}
+
 /* top-left corner */
 .nav-link.active::before {
   content: "";
   position: absolute;
   top: -4px;
-  left: -20px;
+  left: -6px;
   width: 13px;
   height: 8px;
   border-top: 1px solid rgb(102, 0, 102);   
@@ -52,4 +57,8 @@ body {
   height: 8px;
   border-bottom: 1px solid rgb(102, 0, 102);
   border-right: 1px solid rgb(102, 0, 102);
+}
+
+html {
+  scroll-behavior: smooth;
 }

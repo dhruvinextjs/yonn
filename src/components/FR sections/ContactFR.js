@@ -17,7 +17,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function ContactSection() {
+export default function ContactFR() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [formMessage, setFormMessage] = useState("");
 
@@ -45,14 +45,14 @@ export default function ContactSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-2xl lg:text-2xl font-light uppercase text-gray-800">
-            Get in touch with The team
+            NOUS CONTACTER
           </h2>
 
           <div className="relative flex flex-col items-center mt-4">
             <div className="flex items-center gap-1">
-              <span className="w-15 mt-2 h-[1px] bg-gray-300"></span>
+              <span className="w-15 h-[1px] mt-2 bg-gray-300"></span>
               <span className="w-2.5 h-2.5 bg-[#660066] rotate-45"></span>
-              <span className="w-15 mt-2 h-[1px] bg-gray-300"></span>
+              <span className="w-15 h-[1px] mt-2 bg-gray-300"></span>
             </div>
 
             <div className="relative w-6 h-3 -mt-1">
@@ -79,7 +79,7 @@ export default function ContactSection() {
           >
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Votre nom"
               name="name"
               value={formData.name}
               onChange={handleChange}
@@ -89,7 +89,7 @@ export default function ContactSection() {
 
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Votre e-mail"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -120,7 +120,7 @@ export default function ContactSection() {
               type="submit"
               className="bg-[#660066] text-white text-lg sm:text-xl px-8 py-3 rounded transition duration-500 border border-[#660066] hover:bg-white hover:text-[#660066]"
             >
-              Send Message
+              Envoyer le message
             </button>
           </motion.div>
         </motion.form>

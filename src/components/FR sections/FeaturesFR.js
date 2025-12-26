@@ -6,26 +6,26 @@ import { motion } from "framer-motion";
 
 /* animations */
 const headingAnim = {
-  hidden: { opacity: 0, y: 60 }, // more vertical movement
+  hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0 },
 };
 
 const leftAnim = {
-  hidden: { opacity: 0, x: -120 }, // stronger left offset
+  hidden: { opacity: 0, x: -120 },
   visible: { opacity: 1, x: 0 },
 };
 
 const rightAnim = {
-  hidden: { opacity: 0, x: 120 }, // stronger right offset
+  hidden: { opacity: 0, x: 120 },
   visible: { opacity: 1, x: 0 },
 };
 
 const phoneAnim = {
-  hidden: { opacity: 0, scale: 0.7 }, // stronger zoom-in effect
+  hidden: { opacity: 0, scale: 0.7 },
   visible: { opacity: 1, scale: 1 },
 };
 
-export default function FeatureSection() {
+export default function FeaturesFR() {
   return (
     <section className="benifits py-24 overflow-x-hidden">
       <div className="container mx-auto px-6">
@@ -35,13 +35,11 @@ export default function FeatureSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          // transition={{ duration: 0.6 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-
           className="text-center mb-16"
         >
           <h2 className="uppercase text-2xl font-light text-gray-700 mb-1">
-            Features
+            Fonctionnalités
           </h2>
 
           <div className="relative flex flex-col items-center">
@@ -65,19 +63,16 @@ export default function FeatureSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            // transition={{ duration: 0.7 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-
             className="benefits-left space-y-12 text-center lg:text-right"
           >
             <div className="feature group flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-end gap-4">
               <div className="text-center lg:text-right">
                 <h3 className="text-lg font-semibold mb-2 group-hover:text-[#660066]">
-                  Generate Your Code
+                  Générez votre code
                 </h3>
                 <p className="text-medium text-gray-600 max-w-xs mx-auto lg:ml-auto">
-                  Instead of long instructions, simply share your location by
-                  giving out your Yonn Code
+                  Partagez votre localisation simplement en donnant votre Code Yonn
                 </p>
               </div>
 
@@ -89,11 +84,10 @@ export default function FeatureSection() {
             <div className="feature group flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-end gap-4">
               <div className="text-center lg:text-right">
                 <h3 className="text-lg font-semibold mb-2 group-hover:text-[#660066]">
-                  Navigate Better
+                  Naviguez plus facilement
                 </h3>
                 <p className="text-medium text-gray-600 max-w-xs mx-auto lg:ml-auto">
-                  Sometimes, you need more than an address, find your way with
-                  pictures and pre-recorded voice notes
+                  Parfois, nous avons besoin de plus qu&apos;une adresse, trouvez votre chemin avec des photos et des notes vocales pré-enregistrées
                 </p>
               </div>
 
@@ -105,10 +99,10 @@ export default function FeatureSection() {
             <div className="feature group flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-end gap-4">
               <div className="text-center lg:text-right">
                 <h3 className="text-lg font-semibold mb-2 group-hover:text-[#660066]">
-                  Save Locations
+                  Enregistrer vos emplacements
                 </h3>
                 <p className="text-medium text-gray-600 max-w-xs mx-auto lg:ml-auto">
-                  Save your favourite locations, for quick access
+                  Enregistrez vos emplacements favoris sur l&apos;application
                 </p>
               </div>
 
@@ -124,9 +118,7 @@ export default function FeatureSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            // transition={{ duration: 0.7 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-
             className="relative flex justify-center my-12 lg:my-0"
           >
             <Image
@@ -144,9 +136,7 @@ export default function FeatureSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            // transition={{ duration: 0.7 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-
             className="benefits-right space-y-12 text-center lg:text-left"
           >
             <div className="feature group flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
@@ -159,9 +149,7 @@ export default function FeatureSection() {
                   Yonn Business
                 </h3>
                 <p className="text-medium text-gray-600 max-w-xs mx-auto lg:mx-0">
-                  Make it easier for customers to know where to find you by
-                  generating your business Yonn Code. You can link your social
-                  media platforms, add product images and much more
+                 Aidez vos clients à savoir où vous trouver en générant le Yonn Code de votre entreprise. Vous pouvez lier vos plateformes de médias sociaux, ajouter les images de vos produits et bien plus encore
                 </p>
               </div>
             </div>
@@ -173,11 +161,10 @@ export default function FeatureSection() {
 
               <div>
                 <h3 className="text-lg font-semibold mb-2 group-hover:text-[#660066]">
-                  Use Google Maps
+                 Utiliser Google Maps
                 </h3>
                 <p className="text-medium text-gray-600 max-w-xs mx-auto lg:mx-0">
-                  Want to check the itinerary or traffic? Yonn connects you to
-                  Google Maps
+                  Vous voulez vérifier l&apos;itinéraire ou l&apos;embouteillage? Yonn vous connecte à Google Maps
                 </p>
               </div>
             </div>

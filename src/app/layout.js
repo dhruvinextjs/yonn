@@ -2,6 +2,7 @@
 import { Exo, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 // Existing Geist fonts
 const geistSans = Geist({
@@ -18,7 +19,7 @@ const geistMono = Geist_Mono({
 const exo = Exo({
   variable: "--font-exo",
   subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"], // all weights
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // all weights
 });
 
 export const metadata = {
@@ -32,8 +33,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${exo.variable} antialiased`}
       >
-          <Header/>
-        {children}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
