@@ -11,7 +11,6 @@ import "swiper/css";
 import "swiper/css/navigation";
  
 /* ================= PAGE LOAD ANIMATION ================= */
- 
 const fromBottom = {
   hidden: {
     opacity: 0,
@@ -29,7 +28,6 @@ const fromBottom = {
 };
  
 /* ================= DATA ================= */
- 
 const screenshots = [
   "/images/screen_1.png",
   "/images/screen_2.png",
@@ -103,9 +101,9 @@ export default function ScreenShortSection() {
             <span className="w-10 sm:w-12 h-[1px] mt-4 bg-gray-300"></span>
           </div>
           <div className="relative w-6 h-3 -mt-1">
-              <span className="absolute left-1/2 bottom-0 w-[1px] h-3 bg-gray-300 -rotate-45 origin-bottom"></span>
-              <span className="absolute left-1/2 bottom-0 w-[1px] h-3 bg-gray-300 rotate-45 origin-bottom"></span>
-            </div>
+            <span className="absolute left-1/2 bottom-0 w-[1px] h-3 bg-gray-300 -rotate-45 origin-bottom"></span>
+            <span className="absolute left-1/2 bottom-0 w-[1px] h-3 bg-gray-300 rotate-45 origin-bottom"></span>
+          </div>
         </div>
       </motion.div>
  
@@ -117,39 +115,49 @@ export default function ScreenShortSection() {
         custom={0.4}
         className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 md:py-6"
       >
-        <Swiper
-          modules={[Navigation]}
-          centeredSlides
-          initialSlide={START_INDEX}
-          spaceBetween={16}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          onSlideChange={(swiper) => {
-            const i = swiper.activeIndex;
-            if (i <= 4) setActiveLine(1);
-            else if (i <= 7) setActiveLine(2);
-            else setActiveLine(3);
-          }}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 5 },
-          }}
-        >
-          {screenshots.map((img, index) => (
-            <SwiperSlide key={index} className="flex justify-center py-6">
-              {({ isActive }) => (
-                <div
-                  className={`relative w-[230px] h-[460px] rounded-lg overflow-hidden shadow-xl bg-black transition-all
-                    ${isActive ? "scale-105" : "scale-95"}
-                  `}
-                >
-                  <Image src={img} alt="" fill className="object-cover" />
-                </div>
-              )}
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {/* Yeh wrapper add kiya → mobile pe center fix karega */}
+        <div className="flex justify-center">
+          <Swiper
+            modules={[Navigation]}
+            centeredSlides={true}           // ← yeh already tha, rakhna zaroori
+            initialSlide={START_INDEX}
+            spaceBetween={16}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChange={(swiper) => {
+              const i = swiper.activeIndex;
+              if (i <= 4) setActiveLine(1);
+              else if (i <= 7) setActiveLine(2);
+              else setActiveLine(3);
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                centeredSlides: true
+              },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 },
+            }}
+            className="w-full max-w-[320px] md:max-w-none"  // ← mobile pe width control
+          >
+            {screenshots.map((img, index) => (
+              <SwiperSlide
+                key={index}
+                className="!flex justify-center py-6"   // !important se force kiya
+              >
+                {({ isActive }) => (
+                  <div
+                    className={`relative w-[230px] h-[460px] rounded-lg overflow-hidden shadow-xl bg-black transition-all mx-auto
+                      ${isActive ? "scale-105" : "scale-95"}
+                    `}
+                  >
+                    <Image src={img} alt="" fill className="object-cover" />
+                  </div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
  
         <button
           onClick={handlePrev}
@@ -191,3 +199,4 @@ export default function ScreenShortSection() {
     </section>
   );
 }
+ 

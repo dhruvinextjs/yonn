@@ -3,13 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const sections = ["home", "features", "screenshot", "contact", "terms" , "privacy" , "FR"];
+const sections = [
+  "home",
+  "features",
+  "screenshot",
+  "contact",
+  "terms",
+  "privacy",
+  "FR",
+];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
 
   /* header bg change */
   // useEffect(() => {
@@ -19,17 +29,28 @@ export default function Header() {
   // }, []);
 
   useEffect(() => {
-  const onScroll = () => {
-    setScrolled(window.scrollY > 50);
-  };
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-  // ✅ INITIAL CHECK (IMPORTANT)
-  onScroll();
+    // ✅ INITIAL CHECK (IMPORTANT)
+    onScroll();
 
-  window.addEventListener("scroll", onScroll);
-  return () => window.removeEventListener("scroll", onScroll);
-}, []);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
+  useEffect(() => {
+    if (pathname === "/privacy") {
+      setActiveSection("privacy");
+    } else if (pathname === "/terms") {
+      setActiveSection("terms");
+    } else if (pathname === "/FR") {
+      setActiveSection("FR");
+    } else if (pathname === "/") {
+      setActiveSection("home");
+    }
+  }, [pathname]);
 
   /* scroll spy */
   useEffect(() => {
@@ -76,13 +97,27 @@ export default function Header() {
 
         {/* ✅ Desktop Nav → ONLY lg and above */}
         <nav className="hidden lg:flex items-center space-x-6 uppercase text-[15px] font-light">
-          <Link href="/" className={linkClass("home")}>Home</Link>
-          <Link href="#features" className={linkClass("features")}>Features</Link>
-          <Link href="#screenshot" className={linkClass("screenshot")}>Screenshot</Link>
-          <Link href="#contact" className={linkClass("contact")}>Contact</Link>
-          <Link href="/privacy" className={linkClass("privacy")}>Policy</Link>
-          <Link href="/terms" className={linkClass("terms")}>Terms</Link>
-          <Link href="/FR" className={linkClass("FR")}>Francais</Link>
+          <Link href="/" className={linkClass("home")}>
+            Home
+          </Link>
+          <Link href="#features" className={linkClass("features")}>
+            Features
+          </Link>
+          <Link href="#screenshot" className={linkClass("screenshot")}>
+            Screenshot
+          </Link>
+          <Link href="#contact" className={linkClass("contact")}>
+            Contact
+          </Link>
+          <Link href="/privacy" className={linkClass("privacy")}>
+            Policy
+          </Link>
+          <Link href="/terms" className={linkClass("terms")}>
+            Terms
+          </Link>
+          <Link href="/FR" className={linkClass("FR")}>
+            Francais
+          </Link>
         </nav>
 
         {/* Hamburger → md & iPad */}
@@ -99,11 +134,19 @@ export default function Header() {
             viewBox="0 0 24 24"
           >
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
@@ -116,13 +159,27 @@ export default function Header() {
         `}
       >
         <nav className="flex flex-col space-y-4 p-6 uppercase text-gray-700">
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="#features" onClick={() => setMenuOpen(false)}>Features</Link>
-          <Link href="#screenshot" onClick={() => setMenuOpen(false)}>Screenshot</Link>
-          <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-          <Link href="/policy" onClick={() => setMenuOpen(false)}>Policy</Link>
-          <Link href="/terms" onClick={() => setMenuOpen(false)}>Terms</Link>
-          <Link href="/FR" onClick={() => setMenuOpen(false)}>Francais</Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
+          <Link href="#features" onClick={() => setMenuOpen(false)}>
+            Features
+          </Link>
+          <Link href="#screenshot" onClick={() => setMenuOpen(false)}>
+            Screenshot
+          </Link>
+          <Link href="#contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </Link>
+          <Link href="/policy" onClick={() => setMenuOpen(false)}>
+            Policy
+          </Link>
+          <Link href="/terms" onClick={() => setMenuOpen(false)}>
+            Terms
+          </Link>
+          <Link href="/FR" onClick={() => setMenuOpen(false)}>
+            Francais
+          </Link>
         </nav>
       </div>
     </header>

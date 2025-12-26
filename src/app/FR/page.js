@@ -3,6 +3,7 @@ import DownloadFR from '@/components/FR sections/DownloasFR'
 import FeaturesFR from '@/components/FR sections/FeaturesFR'
 import FooterFR from '@/components/FR sections/FooterFR'
 import HeroFR from '@/components/FR sections/HeroFR'
+import ScreenShortFR from '@/components/FR sections/ScreenshotFR'
 import React from 'react'
 
 export default function page() {
@@ -13,6 +14,9 @@ export default function page() {
       </div>
       <div id='features'>
         <FeaturesFR/>
+      </div>
+      <div id='screenshot'>
+        <ScreenShortFR/>
       </div>
       <DownloadFR/>
      <div id='contact'>

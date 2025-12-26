@@ -3,13 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const sections = ["home", "features", "screenshot", "contact", "privacy-fr", "terms-fr", "/"];
+const sections = [
+  "home",
+  "features",
+  "screenshot",
+  "contact",
+  "privacy-fr",
+  "terms-fr",
+  "/",
+];
 
 export default function HeaderFR() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
 
   /* header bg change */
   // useEffect(() => {
@@ -19,17 +29,28 @@ export default function HeaderFR() {
   // }, []);
 
   useEffect(() => {
-  const onScroll = () => {
-    setScrolled(window.scrollY > 50);
-  };
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-  // ✅ INITIAL CHECK — reload par bhi correct state
-  onScroll();
+    // ✅ INITIAL CHECK — reload par bhi correct state
+    onScroll();
 
-  window.addEventListener("scroll", onScroll);
-  return () => window.removeEventListener("scroll", onScroll);
-}, []);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
+  useEffect(() => {
+    if (pathname === "/privacy-fr") {
+      setActiveSection("privacy-fr");
+    } else if (pathname === "/terms-fr") {
+      setActiveSection("terms-fr");
+    } else if (pathname === "/FR") {
+      setActiveSection("FR");
+    } else if (pathname === "/") {
+      setActiveSection("home");
+    }
+  }, [pathname]);
 
   /* scroll spy */
   useEffect(() => {
@@ -74,13 +95,27 @@ export default function HeaderFR() {
 
         {/* Desktop Navigation → ONLY lg */}
         <nav className="hidden lg:flex items-center space-x-6 uppercase text-[15px] font-light">
-          <Link href="/FR" className={linkClass("home")}>Accueil</Link>
-          <Link href="#features" className={linkClass("features")}>Fonctionnalités</Link>
-          <Link href="#screenshot" className={linkClass("screenshot")}>Captures d&apos;écran</Link>
-          <Link href="#contact" className={linkClass("contact")}>Contact</Link>
-          <Link href="/privacy-fr" className={linkClass("privacy-fr")}>Politique</Link>
-          <Link href="/terms-fr" className={linkClass("terms-fr")}>Mentions légales</Link>
-          <Link href="/" className={linkClass("/")}>English</Link>
+          <Link href="/FR" className={linkClass("home")}>
+            Accueil
+          </Link>
+          <Link href="#features" className={linkClass("features")}>
+            Fonctionnalités
+          </Link>
+          <Link href="#screenshot" className={linkClass("screenshot")}>
+            Captures d&apos;écran
+          </Link>
+          <Link href="#contact" className={linkClass("contact")}>
+            Contact
+          </Link>
+          <Link href="/privacy-fr" className={linkClass("privacy-fr")}>
+            Politique
+          </Link>
+          <Link href="/terms-fr" className={linkClass("terms-fr")}>
+            Mentions légales
+          </Link>
+          <Link href="/" className={linkClass("/")}>
+            English
+          </Link>
         </nav>
 
         {/* Hamburger → md & iPad */}
@@ -122,13 +157,27 @@ export default function HeaderFR() {
         `}
       >
         <nav className="flex flex-col space-y-4 p-6 uppercase text-gray-700">
-          <Link href="#home" onClick={() => setMenuOpen(false)}>Accueil</Link>
-          <Link href="#features" onClick={() => setMenuOpen(false)}>Fonctionnalités</Link>
-          <Link href="#screenshot" onClick={() => setMenuOpen(false)}>Captures d&apos;écran</Link>
-          <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-          <Link href="/privacy-fr" onClick={() => setMenuOpen(false)}>Politique</Link>
-          <Link href="/terms-fr" onClick={() => setMenuOpen(false)}>Mentions légales</Link>
-          <Link href="/" onClick={() => setMenuOpen(false)}>English</Link>
+          <Link href="#home" onClick={() => setMenuOpen(false)}>
+            Accueil
+          </Link>
+          <Link href="#features" onClick={() => setMenuOpen(false)}>
+            Fonctionnalités
+          </Link>
+          <Link href="#screenshot" onClick={() => setMenuOpen(false)}>
+            Captures d&apos;écran
+          </Link>
+          <Link href="#contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </Link>
+          <Link href="/privacy-fr" onClick={() => setMenuOpen(false)}>
+            Politique
+          </Link>
+          <Link href="/terms-fr" onClick={() => setMenuOpen(false)}>
+            Mentions légales
+          </Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            English
+          </Link>
         </nav>
       </div>
     </header>
